@@ -16,7 +16,6 @@ client.connect(8080, "127.0.0.1", async () => {
   client.emit("ready_");
 });
 
-// Evento ready é chamado logo apos a conexão com o servidor
 client.on("ready_", async () => {
   while (true) {
     option = await rlQuestion(
@@ -81,7 +80,7 @@ client.on("ready_", async () => {
 
       const file = __dirname + "/" + fileName;
       fileStream = fs.createWriteStream(file);
-      console.log("Recebendo arquivo ...")
+      console.log("Recebendo arquivo ...");
       break;
     }
   }
@@ -92,12 +91,12 @@ client.on("data", (data) => {
   if (dataSub == "end_data")
     data = data.toString().substring(0, data.toString().length - 8);
 
-  if (option == 2 && data) {
+  if (option == 2 && data.toString()) {
     data
       .toString()
       .split(",")
       .map((x) => console.log(x));
-  } else if (option == 3 && data) {
+  } else if (option == 3 && data.toString()) {
     if (data.toString() == "file_not_exist") {
       console.log("Esse arquivo não existe no servidor");
       fileStream.destroy();
@@ -107,12 +106,14 @@ client.on("data", (data) => {
   }
 
   if (dataSub == "end_data") {
-    if (option == 3)
+    if (option == 3) {
       if (fileStream != null) {
         fileStream.end();
         fileStream = null;
-        console.log("Arquivo recebido")
+        console.log("Arquivo recebido");
       }
+    }
+
     client.emit("ready_");
   }
 });

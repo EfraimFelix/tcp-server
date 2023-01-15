@@ -46,7 +46,7 @@ class ClientThread(threading.Thread):
                                                 for i in file_list).encode()))
                 else:
                     self.csocket.send("Nenhum arquivo disponivel".encode())
-                self.csocket.sendmsg("end_data".encode())                    
+                self.csocket.send("end_data".encode())                    
                 print("Lista de Arquivo enviada\n")
             elif option == DOWNLOAD_FILE:
                 file_name = self.csocket.recv(1024).decode()
