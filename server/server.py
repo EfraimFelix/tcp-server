@@ -58,6 +58,7 @@ class ClientThread(threading.Thread):
                 except FileNotFoundError:
                     print(f"Arquivo {file_name} não encontrado ] \n")
                     self.csocket.send('file_not_exist'.encode())
+                    self.csocket.send("end_data".encode())
 
         print("Cliente ", clientAddress, " foi desconectado")
 

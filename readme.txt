@@ -11,3 +11,4 @@ Instruções:
 Obs:
 No lado do cliente foi deixado alguns arquivos para testes (t.txt, p.txt e e.jpg), podendo assim envia-los para o servidor e recebe-los de volta
 Tamanho maximo de arquivo testado: 400mb
+Porta que o socket esta rodando é 3333, verificar se não tem outra aplicação usando
