@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 let option = -1;
 let fileStream = null;
 
-client.connect(8080, "127.0.0.1", async () => {
+client.connect(3333, "127.0.0.1", async () => {
   console.log("Voce esta conectado ao Sevidor!!!");
   client.emit("ready_");
 });
